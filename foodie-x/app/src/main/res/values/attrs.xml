@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AboutReference">
+        <attr name="ar_text" format="string" />
+        <attr name="ar_link" format="string" />
+        <attr name="ar_icon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomNavigationBackground">
+        <attr name="bnb_fab_cradle_margin" format="dimension" />
+        <attr name="bnb_fab_cradle_rounded_corner_radius" format="dimension" />
+        <attr name="bnb_cradle_vertical_offset" format="dimension" />
+        <attr name="bnb_fab_diameter" format="dimension"/>
+        <attr name="bnb_fab_percent_position" format="float" />
+        <attr name="bnb_background_color" format="color" />
+        <attr name="bnb_elevation" format="dimension" />
+        <attr name="bnb_corner_radius" format="dimension" />
+    </declare-styleable>
+
+</resources>

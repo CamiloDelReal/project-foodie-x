@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@+id/constraint_collapsed"
+        app:constraintSetStart="@+id/constraint_expanded">
+
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@+id/ncv_about_content"
+            app:touchAnchorSide="top" />
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/constraint_expanded">
+
+        <Constraint
+            android:id="@+id/cl_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/about_toolbar_height_expanded"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="@dimen/no_elevation" />
+
+        <Constraint
+            android:id="@+id/img_icon"
+            android:layout_width="@dimen/about_icon_size"
+            android:layout_height="@dimen/about_icon_size"
+            android:layout_margin="@dimen/about_header_content_space"
+            android:alpha="1.0"
+            app:layout_constraintBottom_toTopOf="@id/tv_app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/tv_version"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+        <Constraint
+            android:id="@+id/tv_app_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/about_title_height_collapsed"
+            app:layout_constraintBottom_toTopOf="@id/tv_version"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <CustomAttribute
+                app:attributeName="textSize"
+                app:customDimension="@dimen/about_title_text_size_expanded" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/about_padding"
+            android:alpha="1.0"
+            app:layout_constraintBottom_toBottomOf="@id/cl_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </ConstraintSet>
+
+
+    <ConstraintSet android:id="@+id/constraint_collapsed">
+
+        <Constraint
+            android:id="@+id/cl_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/about_toolbar_height_collapsed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="@dimen/toolbar_elevation" />
+
+        <Constraint
+            android:id="@+id/img_icon"
+            android:layout_width="@dimen/about_icon_size"
+            android:layout_height="@dimen/about_icon_size"
+            android:layout_margin="@dimen/about_header_content_space"
+            android:alpha="0.0"
+            app:layout_constraintBottom_toTopOf="@id/tv_app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@+id/tv_app_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/about_title_height_expanded"
+            app:layout_constraintBottom_toBottomOf="@id/cl_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cl_toolbar">
+            <CustomAttribute
+                app:attributeName="textSize"
+                app:customDimension="@dimen/title_text_size_collapsed" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/about_padding"
+            android:alpha="0.0"
+            app:layout_constraintBottom_toBottomOf="@id/cl_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </ConstraintSet>
+
+</MotionScene>

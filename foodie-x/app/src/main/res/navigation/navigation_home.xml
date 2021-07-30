@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/fragment_board">
+
+    <fragment
+        android:id="@+id/fragment_board"
+        android:name="org.xapps.apps.foodiex.views.home.board.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" />
+
+    <fragment
+        android:id="@+id/fragment_recipes"
+        android:name="org.xapps.apps.foodiex.views.home.recipes.RecipesFragment"
+        android:label="fragment_recipes"
+        tools:layout="@layout/fragment_recipes" />
+
+    <fragment
+        android:id="@+id/fragment_bookmarks"
+        android:name="org.xapps.apps.foodiex.views.home.bookmarks.BookmarksFragment"
+        android:label="fragment_bookmarks"
+        tools:layout="@layout/fragment_bookmarks" />
+
+    <fragment
+        android:id="@+id/fragment_search_results"
+        android:name="org.xapps.apps.foodiex.views.home.searchresults.SearchResultsFragment"
+        android:label="fragment_search_results"
+        tools:layout="@layout/fragment_search_results" />
+
+</navigation>

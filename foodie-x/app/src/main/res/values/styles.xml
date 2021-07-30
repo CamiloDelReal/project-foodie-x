@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LightRippleButtonTheme">
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
+
+    <style name="LightRippleButton" parent="Theme.MaterialComponents">
+        <item name="android:theme">@style/LightRippleButtonTheme</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="DarkRippleButtonTheme">
+        <item name="colorControlHighlight">@color/black</item>
+    </style>
+
+    <style name="DarkRippleButton" parent="Theme.MaterialComponents">
+        <item name="android:theme">@style/DarkRippleButtonTheme</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+</resources>

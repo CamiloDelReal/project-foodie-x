@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FoodieX</string>
+    <string name="about_description_1">As you should know by now, this is for fun. We have a file explorer :D</string>
+    <string name="about_description_2">You can find us in GitHub (tap this text) and help us improve. All the tools and libraries use in this project are free, not all the icons shown in this section are provided from the corresponding project, in some we just take a picture and create an icon to use here :)</string>
+    <string name="project_github">https://github.com/CamiloDelReal/project-file-x</string>
+    <string name="fonts">Fonts</string>
+    <string name="noto_sans">Noto Sans</string>
+    <string name="noto_sans_url">https://fonts.google.com/specimen/Noto+Sans</string>
+    <string name="colors">Colors</string>
+    <string name="material_design_colors_url">https://material.io/resources/color</string>
+    <string name="material_design_colors">Material Design Colors</string>
+    <string name="icons">Icons</string>
+    <string name="material_design_icons_url">https://materialdesignicons.com/</string>
+    <string name="material_design_icons">Material Design Icons</string>
+    <string name="libraries_and_tools">Libraries and Tools</string>
+    <string name="android_jetpack">Android Jetpack</string>
+    <string name="android_jetpack_url">https://developer.android.com/jetpack</string>
+    <string name="android_kotlin">Android Kotlin</string>
+    <string name="android_kotlin_url">https://developer.android.com/kotlin</string>
+    <string name="timber">Timber</string>
+    <string name="timber_url">https://github.com/JakeWharton/timber</string>
+    <string name="dexter">Dexter</string>
+    <string name="dexter_url">https://github.com/Karumi/Dexter</string>
+    <string name="whatif">WhatIf</string>
+    <string name="whatif_url">https://github.com/skydoves/WhatIf</string>
+    <string name="toasty">Toasty</string>
+    <string name="toasty_url">https://github.com/GrenderG/Toasty</string>
+    <string name="application_logo">Application logo</string>
+    <string name="title_home">Home</string>
+    <string name="title_recipes">Recipes</string>
+    <string name="title_bookmarks">Bookmarks</string>
+    <string name="empty" translatable="false">"   "</string>
+    <string name="title_more_options">More options</string>
+    <string name="search_recipes">Search recipes</string>
+    <string name="back">Back</string>
+    <string name="transition_splash_to_home" translatable="false">transition_splash_to_home</string>
+    <string name="transition_home_to_about" translatable="false">transition_home_to_about</string>
+    <string name="title_search">Search</string>
+</resources>

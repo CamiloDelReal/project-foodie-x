@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurface"
+        android:transitionName="@string/transition_splash_to_home">
+
+        <View
+            android:id="@+id/v_status_bar_bg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v_navigation_bar_bg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?attr/colorSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/ml_root"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutDescription="@xml/scene_home"
+            app:layout_constraintBottom_toTopOf="@id/v_navigation_bar_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_status_bar_bg">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/g_v_73"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.73" />
+
+            <View
+                android:id="@+id/v_toolbar"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/toolbar_expanded"
+                android:background="?attr/colorPrimary"
+                android:elevation="0dp"
+                android:fitsSystemWindows="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txvTitle"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:elevation="@dimen/on_toolbar_elevation"
+                android:text="Title"
+                android:textColor="?attr/colorOnPrimarySurface"
+                android:textSize="@dimen/title_text_size_expanded" />
+
+            <org.xapps.apps.foodiex.views.custom.BottomNavigationBackground
+                android:id="@+id/mcv_bottom_nav_bg"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:bnb_fab_cradle_margin="@dimen/bottom_nav_fab_cradle_margin"
+                app:bnb_fab_cradle_rounded_corner_radius="@dimen/bottom_nav_fab_cradle_rounded_corner_radius"
+                app:bnb_cradle_vertical_offset="@dimen/bottom_nav_cradle_vertical_offset"
+                app:bnb_fab_diameter="@dimen/bottom_nav_fab_diameter"
+                app:bnb_fab_percent_position="0.73"
+                app:bnb_elevation="@dimen/bottom_nav_elevation"
+                app:bnb_background_color="?attr/colorSurface">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/g2_v_60"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:id="@+id/bottom_navigation_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:backgroundTint="@android:color/transparent"
+                        app:elevation="@dimen/no_elevation"
+                        app:labelVisibilityMode="labeled"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/g2_v_60"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:menu="@menu/menu_home_bottom_navigation" />
+
+                    <ImageButton
+                        android:id="@+id/btn_more_options"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_marginEnd="@dimen/margin_xsmall"
+                        android:contentDescription="@string/title_more_options"
+                        android:elevation="@dimen/no_elevation"
+                        android:src="@drawable/ic_dots_vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="?attr/colorOnSurface" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </org.xapps.apps.foodiex.views.custom.BottomNavigationBackground>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/search_recipes"
+                android:src="@drawable/ic_magnify"
+                app:elevation="@dimen/fab_elevation"
+                app:fabSize="normal"
+                app:layout_constraintBottom_toTopOf="@id/mcv_bottom_nav_bg"
+                app:layout_constraintEnd_toEndOf="@id/g_v_73"
+                app:layout_constraintStart_toStartOf="@id/g_v_73"
+                app:layout_constraintTop_toTopOf="@id/mcv_bottom_nav_bg"
+                app:tint="?attr/colorOnSecondary" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_fragment_home"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/colorSurface"
+                app:defaultNavHost="true"
+                app:layout_constraintBottom_toTopOf="@id/mcv_bottom_nav_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_toolbar"
+                app:navGraph="@navigation/navigation_home" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

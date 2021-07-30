@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/transition_scrolling"
+        app:constraintSetEnd="@id/constraint_collapsed"
+        app:constraintSetStart="@id/constraint_expanded">
+
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:moveWhenScrollAtTop="false"
+            app:touchAnchorId="@+id/nav_host_fragment_home"
+            app:touchAnchorSide="top" />
+
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="50"
+                app:motionTarget="@+id/btn_search"
+                app:percentY="0.35" />
+        </KeyFrameSet>
+
+    </Transition>
+
+
+    <ConstraintSet android:id="@+id/constraint_expanded">
+
+        <Constraint
+            android:id="@+id/v_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbar_expanded"
+            android:elevation="@dimen/no_elevation" />
+
+        <Constraint
+            android:id="@+id/txvTitle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/title_height_expanded"
+            android:layout_marginStart="@dimen/title_margin_horizontal_expended"
+            android:layout_marginEnd="@dimen/title_margin_horizontal_expended"
+            android:layout_marginBottom="@dimen/title_margin_bottom_expended"
+            app:layout_constraintBottom_toBottomOf="@id/v_toolbar"
+            app:layout_constraintEnd_toEndOf="@id/v_toolbar"
+            app:layout_constraintStart_toStartOf="@id/v_toolbar">
+            <CustomAttribute
+                app:attributeName="textSize"
+                app:customDimension="@dimen/title_text_size_expanded" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/mcv_bottom_nav_bg"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/mcv_bottom_nav_bg"
+            app:layout_constraintEnd_toEndOf="@id/g_v_73"
+            app:layout_constraintStart_toStartOf="@id/g_v_73"
+            app:layout_constraintTop_toTopOf="@id/mcv_bottom_nav_bg" />
+
+    </ConstraintSet>
+
+
+    <ConstraintSet android:id="@+id/constraint_collapsed">
+
+        <Constraint
+            android:id="@+id/v_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="@dimen/toolbar_elevation" />
+
+        <Constraint
+            android:id="@+id/txvTitle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/title_height_collapsed"
+            android:layout_marginStart="@dimen/title_margin_horizontal_collapsed"
+            app:layout_constraintBottom_toBottomOf="@id/v_toolbar"
+            app:layout_constraintEnd_toEndOf="@id/v_toolbar"
+            app:layout_constraintStart_toStartOf="@id/v_toolbar"
+            app:layout_constraintTop_toTopOf="@id/v_toolbar">
+            <CustomAttribute
+                app:attributeName="textSize"
+                app:customDimension="@dimen/title_text_size_collapsed" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/mcv_bottom_nav_bg"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:layout_marginTop="@dimen/margin_normal"/>
+
+        <Constraint
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/g_v_73"
+            app:layout_constraintStart_toStartOf="@id/g_v_73"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+    </ConstraintSet>
+
+</MotionScene>
