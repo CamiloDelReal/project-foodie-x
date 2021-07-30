@@ -29,7 +29,9 @@
             android:id="@+id/v_toolbar"
             android:layout_width="0dp"
             android:layout_height="@dimen/toolbar_expanded"
-            android:elevation="@dimen/no_elevation" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:id="@+id/txvTitle"
@@ -72,7 +74,9 @@
             android:id="@+id/v_toolbar"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:elevation="@dimen/toolbar_elevation" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:id="@+id/txvTitle"

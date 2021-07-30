@@ -21,8 +21,7 @@
             android:layout_height="@dimen/about_toolbar_height_expanded"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:elevation="@dimen/no_elevation" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:id="@+id/img_icon"
@@ -77,8 +76,7 @@
             android:layout_height="@dimen/about_toolbar_height_collapsed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:elevation="@dimen/toolbar_elevation" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:id="@+id/img_icon"

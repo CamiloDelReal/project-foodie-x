@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.home.search.SearchBottomSheetFragment">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="?attr/colorSurface"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_normal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:text="@string/title_search" />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_normal" />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_huge" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Key words (need better hint)">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text|textMultiLine" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search"
+                    android:layout_gravity="end"/>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_huge" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:text="@string/meal_types" />
+
+                    <ImageButton
+                        android:id="@+id/btn_check_all_meal_types"
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size"
+                        app:tint="?attr/colorOnSurface"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_checkbox_multiple_blank_outline"
+                        android:contentDescription="@string/check_all_meal_types" />
+
+                    <ImageButton
+                        android:id="@+id/btn_uncheck_all_meal_types"
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_checkbox_multiple_marked_outline"
+                        android:contentDescription="@string/uncheck_all_meal_types" />
+
+                </LinearLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="*"
+                    android:columnCount="3">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_main_course"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/main_course" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_bread"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/bread" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_marinade"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/marinade" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_side_dish"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/side_dish" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_breakfast"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/breakfast" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_fingerfood"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/fingerfood" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_dessert"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/dessert" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_soup"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/soup" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_snack"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/snack" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_appetizer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/appetizer" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_beverage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/beverage" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_drink"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/drink" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_salad"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/salad" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_sauce"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/sauce" />
+
+                </GridLayout>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_big" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:text="@string/cuisines" />
+
+                    <ImageButton
+                        android:id="@+id/btn_check_all_cuisines"
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size"
+                        app:tint="?attr/colorOnSurface"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_checkbox_multiple_blank_outline"
+                        android:contentDescription="@string/check_all_meal_types" />
+
+                    <ImageButton
+                        android:id="@+id/btn_uncheck_all_cuisines"
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_checkbox_multiple_marked_outline"
+                        android:contentDescription="@string/uncheck_all_meal_types" />
+
+                </LinearLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="*"
+                    android:columnCount="3">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_african"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/african" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_german"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/german" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_mediterranean"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/mediterranean" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_american"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/american" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_greek"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/greek" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_mexican"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/mexican" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_british"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/british" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_indian"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/indian" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_middle_eastern"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/middle_eastern" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_cajun"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/cajun" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_irish"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/irish" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_nordic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/nordic" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_caribbean"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/caribbean" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_italian"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/italian" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_southern"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/southern" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_chinese"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/chinese" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_japanese"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/japanese" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_spanish"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/spanish" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_eastern_european"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/eastern_european" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_jewish"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/jewish" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_thai"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/thai" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_european"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/european" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_korean"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/korean" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_vietnamese"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/vietnamese" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_french"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/french" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_latin_american"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/latin_american" />
+
+                </GridLayout>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_big" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:text="@string/intolerances" />
+
+                    <ImageButton
+                        android:id="@+id/btn_check_all_intolerances"
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size"
+                        app:tint="?attr/colorOnSurface"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_checkbox_multiple_blank_outline"
+                        android:contentDescription="@string/check_all_meal_types" />
+
+                    <ImageButton
+                        android:id="@+id/btn_uncheck_all_intolerances"
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_checkbox_multiple_marked_outline"
+                        android:contentDescription="@string/uncheck_all_meal_types" />
+
+                </LinearLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="*"
+                    android:columnCount="3">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_dairy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/dairy" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_peanut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/peanut" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_soy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/soy" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_egg"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/egg" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_seafood"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/seafood" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_sulfite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/sulfite" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_gluten"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/gluten" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_sesame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/sesame" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_tree_nut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/tree_nut" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_grain"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/grain" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_shellfish"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/shellfish" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chx_wheat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/GridCheckBox"
+                        android:text="@string/wheat" />
+
+                </GridLayout>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_big" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:text="@string/diets" />
+
+                    <ImageButton
+                        android:id="@+id/btn_uncheck_all_diets"
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size"
+                        app:tint="?attr/colorOnSurface"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_checkbox_multiple_blank_circle_outline"
+                        android:contentDescription="@string/check_all_meal_types" />
+
+                    <androidx.legacy.widget.Space
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size" />
+
+                </LinearLayout>
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stretchColumns="*"
+                        android:columnCount="3">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_gluten_free"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/gluten_free" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_ketogenic"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/ketogenic" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_vegetarian"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/vegetarian" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_lacto_vegetarian"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/lacto_vegetarian" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_ovo_vegetarian"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/ovo_vegetarian" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_vegan"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/vegan" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_pescetarian"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/pescetarian" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_paleo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/paleo" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_primal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/primal" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rdb_whole30"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/GridRadioButton"
+                            android:text="@string/whole30" />
+
+                    </GridLayout>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:visibility="gone"
+        android:background="?attr/colorSurface"
+        android:elevation="@dimen/toolbar_elevation">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:text="@string/title_search" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_search_from_toobar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/margin_normal"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="@string/search" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

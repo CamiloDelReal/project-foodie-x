@@ -11,6 +11,7 @@ import org.xapps.apps.foodiex.core.remote.SpoonacularApi
 import org.xapps.apps.foodiex.core.repositories.RecipesRepository
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(SingletonComponent::class)
 class RecipesModule {

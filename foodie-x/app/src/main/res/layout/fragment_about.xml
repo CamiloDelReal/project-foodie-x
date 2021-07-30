@@ -54,7 +54,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:background="?attr/colorPrimary"
-                android:elevation="@dimen/no_elevation">
+                android:elevation="@dimen/toolbar_elevation">
 
                 <ImageButton
                     android:id="@+id/btn_back"
@@ -81,7 +81,7 @@
 
             <TextView
                 android:id="@+id/tv_app_name"
-                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

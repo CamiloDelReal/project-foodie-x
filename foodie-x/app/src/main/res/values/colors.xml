@@ -28,4 +28,6 @@
     <color name="success">#4CAF50</color>
     <color name="warning">#FF9800</color>
 
+    <color name="background_secondary">#efefef</color>
+
 </resources>

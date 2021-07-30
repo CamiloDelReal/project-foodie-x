@@ -7,7 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorSurface"
+        android:background="@color/background_secondary"
         android:transitionName="@string/transition_splash_to_home">
 
         <View
@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/toolbar_expanded"
                 android:background="?attr/colorPrimary"
-                android:elevation="0dp"
+                android:elevation="@dimen/toolbar_elevation"
                 android:fitsSystemWindows="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -58,12 +58,12 @@
 
             <TextView
                 android:id="@+id/txvTitle"
-                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:elevation="@dimen/on_toolbar_elevation"
-                android:text="Title"
+                android:text="@string/app_name"
                 android:textColor="?attr/colorOnPrimarySurface"
                 android:textSize="@dimen/title_text_size_expanded" />
 
@@ -143,7 +143,6 @@
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="?attr/colorSurface"
                 app:defaultNavHost="true"
                 app:layout_constraintBottom_toTopOf="@id/mcv_bottom_nav_bg"
                 app:layout_constraintEnd_toEndOf="parent"

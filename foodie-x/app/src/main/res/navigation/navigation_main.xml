@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragment_splash"
         android:name="org.xapps.apps.foodiex.views.splash.SplashFragment"
-        android:label="fragment_splash"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_fragment_splash_to_fragment_home"
@@ -20,17 +20,26 @@
     <fragment
         android:id="@+id/fragment_home"
         android:name="org.xapps.apps.foodiex.views.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_fragment_home_to_fragment_about"
             app:destination="@id/fragment_about" />
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_search"
+            app:destination="@id/fragment_search" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_about"
         android:name="org.xapps.apps.foodiex.views.about.AboutFragment"
-        android:label="fragment_about"
+        android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
+
+    <dialog
+        android:id="@+id/fragment_search"
+        android:name="org.xapps.apps.foodiex.views.home.search.SearchBottomSheetFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
 
 </navigation>
