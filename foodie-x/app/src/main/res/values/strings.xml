@@ -122,11 +122,19 @@
     <string name="error_requesting_permission">Error requesting permission</string>
     <string name="internet_permission_denied">Internet permission denied</string>
     <string name="loading_recipes">Loading recipes</string>
-    <string name="error_loading_recipes_check_internet">Error loading recipes. Please, check your internet connection</string>
+    <string name="error_loading_recipes_check_internet">Error loading recipes. Please, check your internet connection.</string>
     <string name="error_bookmarking_recipe">Error bookmarking the recipe</string>
     <string name="error_unbookmarking_recipe">Error unbookmarking the recipe</string>
-    <string name="internet_not_available_loading_from_cache">Internet connection not detected. Loading from cache</string>
-    <string name="internet_available_loading_from_web">Internet available. Loading from web</string>
+    <string name="internet_not_available_loading_from_cache">Internet connection not detected. Loading from cache.</string>
+    <string name="internet_available_loading_from_web">Internet available. Loading from web.</string>
     <string name="no_bookmarks">No bookmarks saved</string>
     <string name="loading_bookmarks">Loading bookmarks</string>
+    <string name="history">History</string>
+    <string name="popular_drinks">Popular drinks</string>
+    <string name="popular_meals">Popular meals</string>
+    <string name="loading_board">Loading board</string>
+    <string name="error_loading_board_check_internet">Error loading board. Please, check your internet connection</string>
+    <string name="quota_reached">Service daily quota has been reached the limit points. Please, configure another service key or wait till tomorrow.</string>
+    <string name="close">Close</string>
+    <string name="configure">Configure</string>
 </resources>
