@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.MaterialFadeThrough
@@ -15,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import org.xapps.apps.foodiex.R
+import org.xapps.apps.foodiex.core.exceptions.QuotaHasBeenReachException
 import org.xapps.apps.foodiex.core.models.PopularDrink
 import org.xapps.apps.foodiex.core.models.PopularMeal
 import org.xapps.apps.foodiex.core.utils.debug
@@ -23,6 +25,7 @@ import org.xapps.apps.foodiex.views.adapters.PopularDrinkAdapter
 import org.xapps.apps.foodiex.views.adapters.PopularMealAdapter
 import org.xapps.apps.foodiex.views.extensions.showSuccess
 import org.xapps.apps.foodiex.views.extensions.showWarning
+import org.xapps.apps.foodiex.views.home.recipes.RecipesFragment
 import org.xapps.apps.foodiex.views.utils.Message
 import javax.inject.Inject
 
@@ -103,11 +106,18 @@ class BoardFragment @Inject constructor(): Fragment() {
             viewModel.message.collect {
                 debug<BoardFragment>("Message received $it")
                 when(it) {
-                    Message.Loading -> {
+                    is Message.Loading -> {
                         bindings.progressbar.isVisible = true
                     }
-                    Message.Loaded -> {
+                    is Message.Loaded -> {
                         bindings.progressbar.isVisible = false
+                    }
+                    is Message.Error -> {
+                        if(it.exception is QuotaHasBeenReachException) {
+                            debug<BoardFragment>("Quota reached")
+                            bindings.evNotifications.setDescription(getString(R.string.quota_reached))
+                            bindings.evNotifications.isVisible = true
+                        }
                     }
                     is Message.InternetAvailable -> {
                         bindings.evNotifications.isVisible = false

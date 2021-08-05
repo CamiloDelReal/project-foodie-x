@@ -13,11 +13,13 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.xapps.apps.foodiex.R
+import org.xapps.apps.foodiex.core.exceptions.QuotaHasBeenReachException
 import org.xapps.apps.foodiex.core.models.PopularDrink
 import org.xapps.apps.foodiex.core.models.PopularMeal
 import org.xapps.apps.foodiex.core.models.Recipe
 import org.xapps.apps.foodiex.core.repositories.RecipesRepository
 import org.xapps.apps.foodiex.core.utils.ConnectivityTracker
+import org.xapps.apps.foodiex.core.utils.Failure
 import org.xapps.apps.foodiex.core.utils.debug
 import org.xapps.apps.foodiex.core.utils.error
 import org.xapps.apps.foodiex.views.home.recipes.RecipesViewModel
@@ -90,6 +92,9 @@ class BoardViewModel @Inject constructor(
         val resultPopularDrinks = recipesRepository.popularDrinks()
         resultPopularDrinks.either({ failure ->
             error<BoardViewModel>("Error received requesting popular drinks $failure")
+            if(failure is Failure.Exception && failure.description is QuotaHasBeenReachException) {
+                messageFlow.tryEmit(Message.Error(failure.description))
+            }
         }, { recipes ->
             debug<BoardViewModel>("Popular drinks received ${recipes.size}")
             if(recipes.isNotEmpty()) {
@@ -104,6 +109,9 @@ class BoardViewModel @Inject constructor(
         val resultPopularMeals = recipesRepository.popularMeals()
         resultPopularMeals.either({ failure ->
             error<BoardViewModel>("Error received requesting popular meals $failure")
+            if(failure is Failure.Exception && failure.description is QuotaHasBeenReachException) {
+                messageFlow.tryEmit(Message.Error(failure.description))
+            }
         }, { recipes ->
             debug<BoardViewModel>("Popular meals received ${recipes.size}")
             if(recipes.isNotEmpty()) {
