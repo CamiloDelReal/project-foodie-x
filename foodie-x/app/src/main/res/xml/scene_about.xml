@@ -41,12 +41,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
-
         <Constraint
             android:id="@+id/tv_app_name"
             android:layout_width="0dp"
-            android:layout_height="@dimen/about_title_height_collapsed"
+            android:layout_height="@dimen/about_title_height_expanded"
             app:layout_constraintBottom_toTopOf="@id/tv_version"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -91,7 +89,7 @@
         <Constraint
             android:id="@+id/tv_app_name"
             android:layout_width="0dp"
-            android:layout_height="@dimen/about_title_height_expanded"
+            android:layout_height="@dimen/about_title_height_collapsed"
             app:layout_constraintBottom_toBottomOf="@id/cl_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

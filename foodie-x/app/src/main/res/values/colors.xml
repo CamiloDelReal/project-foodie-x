@@ -22,7 +22,9 @@
     <color name="deep_orange_900">#bf360c</color>
 
     <color name="black">#FF000000</color>
+    <color name="black_dd">#DD000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <color name="error">#F44336</color>
     <color name="success">#4CAF50</color>

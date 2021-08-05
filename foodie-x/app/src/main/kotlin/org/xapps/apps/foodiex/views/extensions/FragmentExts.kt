@@ -10,6 +10,11 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import es.dmoral.toasty.Toasty
 import org.xapps.apps.foodiex.R
 
@@ -98,4 +103,36 @@ fun Fragment.navigationBarColor(color: Int) {
 fun Fragment.launchUri(uri: String) {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
     startActivity(intent)
+}
+
+fun Fragment.requestPermissionsWithDexter(
+    permissions: Collection<String>,
+    permissionsGranted: () -> Unit,
+    permissionsDenied: () -> Unit,
+    error: () -> Unit
+) {
+    Dexter.withContext(requireContext())
+        .withPermissions(permissions)
+        .withListener(object : MultiplePermissionsListener {
+            override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+                report?.apply {
+                    if (areAllPermissionsGranted()) {
+                        permissionsGranted.invoke()
+                    } else {
+                        permissionsDenied.invoke()
+                    }
+                }
+            }
+
+            override fun onPermissionRationaleShouldBeShown(
+                permissions: MutableList<PermissionRequest>?,
+                token: PermissionToken?
+            ) {
+                token?.continuePermissionRequest()
+            }
+        })
+        .withErrorListener {
+            error.invoke()
+        }
+        .check()
 }

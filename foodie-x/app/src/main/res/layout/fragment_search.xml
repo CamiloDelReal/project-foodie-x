@@ -45,13 +45,17 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text|textMultiLine" />
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:inputType="text" />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_gravity="end"
                     android:text="@string/search" />
 
@@ -77,6 +81,8 @@
                         android:layout_width="@dimen/search_check_button_size"
                         android:layout_height="@dimen/search_check_button_size"
                         android:background="?attr/selectableItemBackgroundBorderless"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/check_all_meal_types"
                         android:contentDescription="@string/check_all_meal_types"
                         android:src="@drawable/ic_checkbox_multiple_blank_outline"
                         app:tint="?attr/colorOnSurface" />
@@ -86,6 +92,8 @@
                         android:layout_width="@dimen/search_check_button_size"
                         android:layout_height="@dimen/search_check_button_size"
                         android:background="?attr/selectableItemBackgroundBorderless"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/uncheck_all_meal_types"
                         android:contentDescription="@string/uncheck_all_meal_types"
                         android:src="@drawable/ic_checkbox_multiple_marked_outline"
                         app:tint="?attr/colorOnSurface" />
@@ -103,6 +111,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/main_course"
                         android:text="@string/main_course" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -110,6 +120,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/bread"
                         android:text="@string/bread" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -117,6 +129,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/marinade"
                         android:text="@string/marinade" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -124,6 +138,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/side_dish"
                         android:text="@string/side_dish" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -131,6 +147,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/breakfast"
                         android:text="@string/breakfast" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -138,6 +156,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/fingerfood"
                         android:text="@string/fingerfood" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -145,6 +165,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/dessert"
                         android:text="@string/dessert" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -152,6 +174,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/soup"
                         android:text="@string/soup" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -159,6 +183,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/snack"
                         android:text="@string/snack" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -166,6 +192,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/appetizer"
                         android:text="@string/appetizer" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -173,6 +201,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/beverage"
                         android:text="@string/beverage" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -180,6 +210,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/drink"
                         android:text="@string/drink" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -187,6 +219,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/salad"
                         android:text="@string/salad" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -194,6 +228,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/sauce"
                         android:text="@string/sauce" />
 
                 </GridLayout>
@@ -220,7 +256,9 @@
                         android:layout_width="@dimen/search_check_button_size"
                         android:layout_height="@dimen/search_check_button_size"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/check_all_meal_types"
+                        android:contentDescription="@string/check_all_cuisine_types"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/check_all_cuisine_types"
                         android:src="@drawable/ic_checkbox_multiple_blank_outline"
                         app:tint="?attr/colorOnSurface" />
 
@@ -229,7 +267,9 @@
                         android:layout_width="@dimen/search_check_button_size"
                         android:layout_height="@dimen/search_check_button_size"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/uncheck_all_meal_types"
+                        android:contentDescription="@string/uncheck_all_cuisine_types"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/uncheck_all_cuisine_types"
                         android:src="@drawable/ic_checkbox_multiple_marked_outline"
                         app:tint="?attr/colorOnSurface" />
 
@@ -246,6 +286,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/african"
                         android:text="@string/african" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -253,6 +295,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/german"
                         android:text="@string/german" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -260,6 +304,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/mediterranean"
                         android:text="@string/mediterranean" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -267,6 +313,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/american"
                         android:text="@string/american" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -274,6 +322,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/greek"
                         android:text="@string/greek" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -281,6 +331,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/mexican"
                         android:text="@string/mexican" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -288,6 +340,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/british"
                         android:text="@string/british" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -295,6 +349,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/indian"
                         android:text="@string/indian" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -302,6 +358,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/middle_eastern"
                         android:text="@string/middle_eastern" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -309,6 +367,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/cajun"
                         android:text="@string/cajun" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -316,6 +376,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/irish"
                         android:text="@string/irish" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -323,6 +385,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/nordic"
                         android:text="@string/nordic" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -330,6 +394,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/caribbean"
                         android:text="@string/caribbean" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -337,6 +403,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/italian"
                         android:text="@string/italian" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -344,6 +412,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/southern"
                         android:text="@string/southern" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -351,6 +421,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/chinese"
                         android:text="@string/chinese" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -358,6 +430,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/japanese"
                         android:text="@string/japanese" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -365,6 +439,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/spanish"
                         android:text="@string/spanish" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -372,6 +448,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/eastern_european"
                         android:text="@string/eastern_european" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -379,6 +457,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/jewish"
                         android:text="@string/jewish" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -386,6 +466,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/thai"
                         android:text="@string/thai" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -393,6 +475,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/european"
                         android:text="@string/european" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -400,6 +484,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/korean"
                         android:text="@string/korean" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -407,6 +493,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/vietnamese"
                         android:text="@string/vietnamese" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -414,6 +502,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/french"
                         android:text="@string/french" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -421,6 +511,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/latin_american"
                         android:text="@string/latin_american" />
 
                 </GridLayout>
@@ -447,8 +539,10 @@
                         android:layout_width="@dimen/search_check_button_size"
                         android:layout_height="@dimen/search_check_button_size"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/check_all_meal_types"
+                        android:contentDescription="@string/check_all_intolerance_types"
                         android:src="@drawable/ic_checkbox_multiple_blank_outline"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/check_all_intolerance_types"
                         app:tint="?attr/colorOnSurface" />
 
                     <ImageButton
@@ -456,7 +550,9 @@
                         android:layout_width="@dimen/search_check_button_size"
                         android:layout_height="@dimen/search_check_button_size"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/uncheck_all_meal_types"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/uncheck_all_intolerance_types"
+                        android:contentDescription="@string/uncheck_all_intolerance_types"
                         android:src="@drawable/ic_checkbox_multiple_marked_outline"
                         app:tint="?attr/colorOnSurface" />
 
@@ -473,6 +569,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/dairy"
                         android:text="@string/dairy" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -480,6 +578,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/peanut"
                         android:text="@string/peanut" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -487,6 +587,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/soy"
                         android:text="@string/soy" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -494,6 +596,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/egg"
                         android:text="@string/egg" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -501,6 +605,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/seafood"
                         android:text="@string/seafood" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -508,6 +614,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/sulfite"
                         android:text="@string/sulfite" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -515,6 +623,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/gluten"
                         android:text="@string/gluten" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -522,6 +632,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/sesame"
                         android:text="@string/sesame" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -529,6 +641,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/tree_nut"
                         android:text="@string/tree_nut" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -536,6 +650,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/grain"
                         android:text="@string/grain" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -543,6 +659,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/shellfish"
                         android:text="@string/shellfish" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -550,6 +668,8 @@
                         style="@style/GridCheckBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/wheat"
                         android:text="@string/wheat" />
 
                 </GridLayout>
@@ -576,7 +696,9 @@
                         android:layout_width="@dimen/search_check_button_size"
                         android:layout_height="@dimen/search_check_button_size"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/check_all_meal_types"
+                        android:contentDescription="@string/check_all_diets_types"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/uncheck_all_diets_types"
                         android:src="@drawable/ic_checkbox_multiple_blank_circle_outline"
                         app:tint="?attr/colorOnSurface" />
 
@@ -586,90 +708,127 @@
 
                 </LinearLayout>
 
-                <RadioGroup
+                <org.xapps.apps.foodiex.views.custom.GridRadioGroup
+                    android:id="@+id/rg_diets"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:columnCount="3"
+                    android:stretchColumns="*">
 
-                    <GridLayout
-                        android:layout_width="match_parent"
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_gluten_free"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:columnCount="3"
-                        android:stretchColumns="*">
+                        tools:targetApi="o"
+                        android:tooltipText="@string/gluten_free"
+                        android:text="@string/gluten_free" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_gluten_free"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/gluten_free" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_ketogenic"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/ketogenic"
+                        android:text="@string/ketogenic" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_ketogenic"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ketogenic" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_vegetarian"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/vegetarian"
+                        android:text="@string/vegetarian" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_vegetarian"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/vegetarian" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_lacto_vegetarian"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/lacto_vegetarian"
+                        android:text="@string/lacto_vegetarian" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_lacto_vegetarian"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/lacto_vegetarian" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_ovo_vegetarian"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/ovo_vegetarian"
+                        android:text="@string/ovo_vegetarian" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_ovo_vegetarian"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ovo_vegetarian" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_vegan"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/vegan"
+                        android:text="@string/vegan" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_vegan"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/vegan" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_pescetarian"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/pescetarian"
+                        android:text="@string/pescetarian" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_pescetarian"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pescetarian" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_paleo"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/paleo"
+                        android:text="@string/paleo" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_paleo"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/paleo" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_primal"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/primal"
+                        android:text="@string/primal" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_primal"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/primal" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdb_whole30"
+                        style="@style/GridRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="o"
+                        android:tooltipText="@string/whole30"
+                        android:text="@string/whole30" />
 
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:id="@+id/rdb_whole30"
-                            style="@style/GridRadioButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/whole30" />
+                </org.xapps.apps.foodiex.views.custom.GridRadioGroup>
 
-                    </GridLayout>
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_big" />
 
-                </RadioGroup>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/nutrition"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+                    <androidx.legacy.widget.Space
+                        android:layout_width="@dimen/search_check_button_size"
+                        android:layout_height="@dimen/search_check_button_size" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

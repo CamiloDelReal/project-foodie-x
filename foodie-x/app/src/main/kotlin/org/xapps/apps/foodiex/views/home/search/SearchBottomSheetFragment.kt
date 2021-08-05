@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
@@ -63,6 +64,7 @@ class SearchBottomSheetFragment @Inject constructor(): BottomSheetDialogFragment
             }
 
         })
+
 
         return dialog
     }

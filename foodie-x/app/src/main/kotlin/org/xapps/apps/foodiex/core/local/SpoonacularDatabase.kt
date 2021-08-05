@@ -2,16 +2,22 @@ package org.xapps.apps.foodiex.core.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import org.xapps.apps.foodiex.core.models.Dummy
+import org.xapps.apps.foodiex.core.models.Bookmark
+import org.xapps.apps.foodiex.core.models.Recipe
+
 
 @Database(
     entities = [
-        Dummy::class
+        Recipe::class,
+        Bookmark::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class SpoonacularDatabase: RoomDatabase() {
 
+    abstract fun recipeDao(): RecipeDao
+
+    abstract fun bookmarkDao(): BookmarkDao
 
 }

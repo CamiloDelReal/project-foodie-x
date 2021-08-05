@@ -1,5 +1,6 @@
 package org.xapps.apps.foodiex.views.splash
 
+import android.Manifest
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -17,8 +18,7 @@ import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import org.xapps.apps.foodiex.R
 import org.xapps.apps.foodiex.databinding.FragmentSplashBinding
-import org.xapps.apps.foodiex.views.extensions.navigationBarColor
-import org.xapps.apps.foodiex.views.extensions.setStatusBarForegoundColor
+import org.xapps.apps.foodiex.views.extensions.*
 import javax.inject.Inject
 
 
@@ -47,12 +47,26 @@ class SplashFragment @Inject constructor() : Fragment() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             context?.let {
-                exitTransition = Hold()
-                bindings.clRoot.transitionName = getString(R.string.transition_splash_to_home)
-                val extras = FragmentNavigatorExtras(bindings.clRoot to getString(R.string.transition_splash_to_home))
-                findNavController().navigate(SplashFragmentDirections.actionFragmentSplashToFragmentHome(), extras)
+                requestPermissionsWithDexter(
+                    permissions = listOf(Manifest.permission.INTERNET),
+                    permissionsGranted = {
+                        exitTransition = Hold()
+                        bindings.clRoot.transitionName = getString(R.string.transition_splash_to_home)
+                        val extras = FragmentNavigatorExtras(bindings.clRoot to getString(R.string.transition_splash_to_home))
+                        findNavController().navigate(SplashFragmentDirections.actionFragmentSplashToFragmentHome(), extras)
+                    },
+                    permissionsDenied = {
+                        showWarning(getString(R.string.internet_permission_denied))
+                        requireActivity().finish()
+                    },
+                    error = {
+                        showError(getString(R.string.error_requesting_permission))
+                    }
+                )
+
+
             }
-        }, 2000)
+        }, 1000)
     }
 
     override fun onResume() {

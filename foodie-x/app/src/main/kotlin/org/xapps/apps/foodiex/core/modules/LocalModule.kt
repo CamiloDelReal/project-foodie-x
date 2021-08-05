@@ -7,6 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import org.xapps.apps.foodiex.core.local.BookmarkDao
+import org.xapps.apps.foodiex.core.local.RecipeDao
 import org.xapps.apps.foodiex.core.local.SpoonacularDatabase
 import javax.inject.Singleton
 
@@ -23,5 +25,15 @@ class LocalModule {
     @Provides
     fun provideSpoonacularDatabase(@ApplicationContext context: Context): SpoonacularDatabase =
         Room.databaseBuilder(context, SpoonacularDatabase::class.java, FILENAME).build()
+
+    @Singleton
+    @Provides
+    fun provideRecipeDao(database: SpoonacularDatabase): RecipeDao =
+        database.recipeDao()
+
+    @Singleton
+    @Provides
+    fun provideBookmarkDao(database: SpoonacularDatabase): BookmarkDao =
+        database.bookmarkDao()
 
 }
