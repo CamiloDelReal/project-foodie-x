@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import okio.IOException
 import org.xapps.apps.foodiex.BuildConfig
+import org.xapps.apps.foodiex.core.exceptions.QuotaHasBeenReachException
 import org.xapps.apps.foodiex.core.local.RecipeDao
 import org.xapps.apps.foodiex.core.models.Recipe
 import org.xapps.apps.foodiex.core.remote.SpoonacularApi
@@ -76,7 +77,11 @@ class RecipePagingSource constructor(
             LoadResult.Error(ex)
         } catch (ex: HttpException) {
             error<RecipePagingSource>(ex, "Exception captured")
-            LoadResult.Error(ex)
+            if(ex.response()?.code() == 402) {
+                LoadResult.Error(QuotaHasBeenReachException(ex.response()?.message() ?: "Quota has been reached"))
+            } else {
+                LoadResult.Error(ex)
+            }
         } catch (ex: Exception) {
             error<RecipePagingSource>(ex, "Exception captured")
             LoadResult.Error(ex)

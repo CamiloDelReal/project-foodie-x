@@ -9,5 +9,8 @@ sealed class Message {
     object InternetNotAvailable: Message()
     object Loading: Message()
     object Loaded: Message()
+    object HistoryLoaded: Message()
+    object PopularDrinksLoaded: Message()
+    object PopularMealsLoaded: Message()
 
 }

@@ -10,15 +10,14 @@ import com.squareup.moshi.JsonClass
 
 
 @JsonClass(generateAdapter = true)
-@Entity(tableName = "recipes")
-data class Recipe(
+@Entity(tableName = "popular_meals")
+data class PopularMeal(
     @Transient
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "guid")
     var guid: Long = 0,
 
     @Json(name = "id")
-    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
     val id: Long,
 

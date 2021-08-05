@@ -127,7 +127,12 @@ class BookmarksFragment @Inject constructor() : Fragment() {
                             bindings.progressbar.isVisible = true
                         }
                         is Message.Loaded -> {
-                            bindings.evNotifications.isVisible = false
+                            if(recipesAdapter.itemCount == 0) {
+                                bindings.evNotifications.setDescription(getString(R.string.no_bookmarks))
+                                bindings.evNotifications.isVisible = true
+                            } else {
+                                bindings.evNotifications.isVisible = false
+                            }
                             bindings.progressbar.isVisible = false
                         }
                         is Message.Error -> {

@@ -34,11 +34,11 @@ class RecipesViewModel @Inject constructor(
     val message: SharedFlow<Message> = messageFlow
     val recipes: SharedFlow<PagingData<Recipe>> = recipesFlow
 
-    private var isInternetAvailable = true
+    private var wasInternetLastTimeAvailable = true
 
     init {
-        isInternetAvailable = connectivityTracker.isConnectedToInternet()
-        if(!isInternetAvailable) {
+        wasInternetLastTimeAvailable = connectivityTracker.isConnectedToInternet()
+        if(!wasInternetLastTimeAvailable) {
             messageFlow.tryEmit(Message.InternetNotAvailable)
         }
 
@@ -46,13 +46,13 @@ class RecipesViewModel @Inject constructor(
             connectivityTracker.connectivityFlow
                 .collect { available ->
                     debug<RecipesViewModel>("Connectivity availavility = $available")
-                    if (isInternetAvailable != available) {
+                    if (wasInternetLastTimeAvailable != available) {
                         if (available) {
                             messageFlow.tryEmit(Message.InternetAvailable)
                         } else {
                             messageFlow.tryEmit(Message.InternetNotAvailable)
                         }
-                        isInternetAvailable = available
+                        wasInternetLastTimeAvailable = available
                     }
                 }
         }
@@ -80,25 +80,6 @@ class RecipesViewModel @Inject constructor(
 
         connectivityTracker.start()
     }
-
-//    fun recipes(): Flow<PagingData<Recipe>> {
-//        return recipesRepository.recipes()
-//            .catch { ex ->
-//                ex.printStackTrace()
-//                messageFlow.tryEmit(Message.Error(ex))
-//            }
-//            .map { pagingData ->
-//                pagingData.map { recipe ->
-//                    val result = recipesRepository.checkBookmark(recipe)
-//                    result.either({ failure ->
-//                        error<RecipesViewModel>("Error received $failure")
-//                    }, { bookmarked ->
-//                    })
-//                    recipe
-//                }
-//            }
-//            .cachedIn(viewModelScope)
-//    }
 
     fun requestBookmark(recipe: Recipe) {
         viewModelScope.launch {

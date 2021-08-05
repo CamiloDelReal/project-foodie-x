@@ -1,5 +1,6 @@
 package org.xapps.apps.foodiex.views.home.recipes
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
@@ -19,11 +21,14 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.xapps.apps.foodiex.R
+import org.xapps.apps.foodiex.core.exceptions.QuotaHasBeenReachException
 import org.xapps.apps.foodiex.core.models.Recipe
+import org.xapps.apps.foodiex.core.utils.debug
 import org.xapps.apps.foodiex.databinding.FragmentRecipesBinding
 import org.xapps.apps.foodiex.views.adapters.RecipeAdapter
 import org.xapps.apps.foodiex.views.extensions.showSuccess
 import org.xapps.apps.foodiex.views.extensions.showWarning
+import org.xapps.apps.foodiex.views.navigation.MainNavigator
 import org.xapps.apps.foodiex.views.utils.Message
 import javax.inject.Inject
 
@@ -33,8 +38,10 @@ class RecipesFragment @Inject constructor() : Fragment() {
 
     private lateinit var bindings: FragmentRecipesBinding
     private val viewModel: RecipesViewModel by viewModels()
+    private lateinit var mainNavigator: MainNavigator
 
     private lateinit var recipesAdapter: RecipeAdapter
+
     private val recipesAdapterListener = object: RecipeAdapter.Listener {
         override fun clicked(recipe: Recipe) {
         }
@@ -64,6 +71,8 @@ class RecipesFragment @Inject constructor() : Fragment() {
         exitTransition = MaterialFadeThrough().apply {
             duration = 200
         }
+
+        mainNavigator = requireParentFragment().requireParentFragment() as MainNavigator
     }
 
     override fun onCreateView(
@@ -115,6 +124,15 @@ class RecipesFragment @Inject constructor() : Fragment() {
         paginationStatesJob = lifecycleScope.launchWhenResumed {
             recipesAdapter.loadStateFlow.collectLatest { loadStates ->
                 bindings.progressbar.isVisible = (loadStates.refresh is LoadState.Loading)
+                if(loadStates.refresh is LoadState.Error) {
+                    debug<RecipesFragment>("Error received")
+
+                    if((loadStates.refresh as LoadState.Error).error is QuotaHasBeenReachException) {
+                        debug<RecipesFragment>("Quota reached")
+                        bindings.evNotifications.setDescription(getString(R.string.quota_reached))
+                        bindings.evNotifications.isVisible = true
+                    }
+                }
             }
         }
 

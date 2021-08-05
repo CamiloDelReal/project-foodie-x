@@ -4,19 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableArrayList
-import androidx.databinding.ObservableList
-import androidx.databinding.ViewDataBinding
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
 import org.xapps.apps.foodiex.R
+import org.xapps.apps.foodiex.core.models.PopularDrink
+import org.xapps.apps.foodiex.core.models.PopularMeal
 import org.xapps.apps.foodiex.core.utils.debug
 import org.xapps.apps.foodiex.databinding.FragmentBoardBinding
-import org.xapps.apps.foodiex.databinding.ItemItemBinding
+import org.xapps.apps.foodiex.views.adapters.PopularDrinkAdapter
+import org.xapps.apps.foodiex.views.adapters.PopularMealAdapter
+import org.xapps.apps.foodiex.views.extensions.showSuccess
+import org.xapps.apps.foodiex.views.extensions.showWarning
+import org.xapps.apps.foodiex.views.utils.Message
 import javax.inject.Inject
 
 
@@ -24,9 +31,39 @@ import javax.inject.Inject
 class BoardFragment @Inject constructor(): Fragment() {
 
     private lateinit var bindings: FragmentBoardBinding
+    private val viewModel: BoardViewModel by viewModels()
 
-    private lateinit var adapter: ItemAdapter
-    private var data: ObservableArrayList<Item> = ObservableArrayList()
+    private var messageJob: Job? = null
+
+    private lateinit var popularDrinksAdapter: PopularDrinkAdapter
+
+    private val popularDrinksAdapterListener = object: PopularDrinkAdapter.Listener {
+        override fun clicked(recipe: PopularDrink) {
+        }
+
+        override fun requestBookmark(recipe: PopularDrink) {
+            viewModel.requestBookmark(recipe)
+        }
+
+        override fun requestRemoveBookmark(recipe: PopularDrink) {
+            viewModel.requestRemoveBookmark(recipe)
+        }
+    }
+
+    private lateinit var popularMealsAdapter: PopularMealAdapter
+
+    private val popularMealsAdapterListener = object: PopularMealAdapter.Listener {
+        override fun clicked(recipe: PopularMeal) {
+        }
+
+        override fun requestBookmark(recipe: PopularMeal) {
+            viewModel.requestBookmark(recipe)
+        }
+
+        override fun requestRemoveBookmark(recipe: PopularMeal) {
+            viewModel.requestRemoveBookmark(recipe)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,148 +84,94 @@ class BoardFragment @Inject constructor(): Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bindings = FragmentBoardBinding.inflate(layoutInflater)
+
+        popularDrinksAdapter = PopularDrinkAdapter(viewModel.popularDrinks, popularDrinksAdapterListener)
+        bindings.rvPopularDrinks.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        bindings.rvPopularDrinks.adapter = popularDrinksAdapter
+
+        popularMealsAdapter = PopularMealAdapter(viewModel.popularMeals, popularMealsAdapterListener)
+        bindings.rvPopularMeals.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        bindings.rvPopularMeals.adapter = popularMealsAdapter
+
         return bindings.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        for (i in 1..1000) {
-            data.add(Item(data = "Item $i"))
-        }
-        adapter = ItemAdapter(data)
-        bindings.rlData.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        bindings.rlData.adapter = adapter
-    }
-}
+        messageJob = lifecycleScope.launchWhenResumed {
+            viewModel.message.collect {
+                debug<BoardFragment>("Message received $it")
+                when(it) {
+                    Message.Loading -> {
+                        bindings.progressbar.isVisible = true
+                    }
+                    Message.Loaded -> {
+                        bindings.progressbar.isVisible = false
+                    }
+                    is Message.InternetAvailable -> {
+                        bindings.evNotifications.isVisible = false
+                        showSuccess(getString(R.string.internet_available_loading_from_web))
+                        viewModel.requestPopulars()
+                    }
+                    is Message.InternetNotAvailable -> {
+                        if(viewModel.history.isEmpty() && viewModel.popularDrinks.isEmpty() && viewModel.popularMeals.isEmpty()) {
+                            bindings.evNotifications.setDescription(getString(R.string.error_loading_board_check_internet))
+                            bindings.evNotifications.isVisible = true
+                        }
+                        showWarning(getString(R.string.internet_not_available_loading_from_cache))
+                    }
+                    Message.HistoryLoaded -> {
+                        debug<BoardFragment>("History loaded")
+                        bindings.evNotifications.isVisible = false
+                        bindings.txvHistory.isVisible = true
+                        bindings.rvHistory.isVisible = true
+                    }
+                    Message.PopularDrinksLoaded -> {
+                        debug<BoardFragment>("Popular drinks loaded")
+                        bindings.evNotifications.isVisible = false
+                        bindings.txvPopularDrinks.isVisible = true
+                        bindings.rvPopularDrinks.isVisible = true
+                    }
+                    Message.PopularMealsLoaded -> {
+                        debug<BoardFragment>("Popular meals loaded")
+                        bindings.evNotifications.isVisible = false
+                        bindings.txvPopularMeals.isVisible = true
+                        bindings.rvPopularMeals.isVisible = true
 
-
-data class Item(
-    val data: String
-)
-
-
-abstract class ListBindingAdapter<TItem>(items: List<TItem>) :
-    RecyclerView.Adapter<ListBindingAdapter.BindingViewHolder>() {
-
-    var items: List<TItem> = ArrayList()
-        set(value) {
-            val lastList = field
-            if (lastList !== value) {
-                if (lastList is ObservableList) {
-                    lastList.removeOnListChangedCallback(onListChangedCallback)
+                    }
                 }
-                if (value is ObservableList) {
-                    value.addOnListChangedCallback(onListChangedCallback)
-                }
-                if (lastList.isNotEmpty()) {
-                    notifyItemRangeRemoved(0, lastList.size)
-                }
-            }
-            field = value
-            notifyItemRangeInserted(0, value.size)
-        }
-
-    class BindingViewHolder constructor(val bindings: ViewDataBinding) :
-        RecyclerView.ViewHolder(bindings.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingViewHolder {
-        val bindings = createBinding(parent)
-        return BindingViewHolder(bindings)
-    }
-
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
-    private fun createBinding(parent: ViewGroup): ViewDataBinding {
-        return DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            itemLayout,
-            parent,
-            false
-        )
-    }
-
-    abstract val itemLayout: Int
-
-    override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
-        if (position < itemCount) {
-            bind(holder.bindings, getItem(position))
-            holder.bindings.executePendingBindings()
-        }
-    }
-
-    private fun getItem(position: Int): TItem {
-        return items[position]
-    }
-
-    protected abstract fun bind(bindings: ViewDataBinding, item: TItem)
-
-    private val onListChangedCallback =
-        object : ObservableList.OnListChangedCallback<ObservableList<TItem>>() {
-            override fun onChanged(sender: ObservableList<TItem>?) {
-                notifyDataSetChanged()
-            }
-
-            override fun onItemRangeRemoved(
-                sender: ObservableList<TItem>?,
-                positionStart: Int,
-                itemCount: Int
-            ) {
-//                notifyItemRangeRemoved(positionStart, itemCount)
-                notifyDataSetChanged()
-            }
-
-            override fun onItemRangeMoved(
-                sender: ObservableList<TItem>?,
-                fromPosition: Int,
-                toPosition: Int,
-                itemCount: Int
-            ) {
-//                notifyItemMoved(fromPosition, toPosition)
-                notifyDataSetChanged()
-            }
-
-            override fun onItemRangeInserted(
-                sender: ObservableList<TItem>?,
-                positionStart: Int,
-                itemCount: Int
-            ) {
-//                notifyItemRangeChanged(positionStart, itemCount)
-                notifyDataSetChanged()
-            }
-
-            override fun onItemRangeChanged(
-                sender: ObservableList<TItem>?,
-                positionStart: Int,
-                itemCount: Int
-            ) {
-//                notifyItemRangeChanged(positionStart, itemCount)
-                notifyDataSetChanged()
-            }
-        }
-
-    init {
-        this.items = items
-    }
-}
-
-class ItemAdapter(
-    private val data: ObservableArrayList<Item>
-) : ListBindingAdapter<Item>(data) {
-
-    override val itemLayout: Int
-        get() =  R.layout.item_item
-
-    override fun bind(bindings: ViewDataBinding, item: Item) {
-        debug<BoardFragment>("Item binded $item")
-        when (bindings) {
-
-            is ItemItemBinding -> {
-                debug<ItemAdapter>("ItemItemBinding detected")
             }
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if(!viewModel.isInternetAvailable()) {
+            if(viewModel.history.isEmpty() && viewModel.popularDrinks.isEmpty() && viewModel.popularMeals.isEmpty()) {
+                bindings.evNotifications.setDescription(getString(R.string.error_loading_board_check_internet))
+                bindings.evNotifications.isVisible = true
+            } else {
+                bindings.evNotifications.isVisible = false
+                showWarning(getString(R.string.internet_not_available_loading_from_cache))
+            }
+        } else {
+            if(viewModel.history.isEmpty() && viewModel.popularDrinks.isEmpty() && viewModel.popularMeals.isEmpty()) {
+                bindings.evNotifications.setDescription(getString(R.string.loading_board))
+                bindings.evNotifications.isVisible = true
+            } else {
+                bindings.evNotifications.isVisible = false
+            }
+        }
+
+        viewModel.requestBoard()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        messageJob?.cancel()
+        messageJob = null
+    }
 }

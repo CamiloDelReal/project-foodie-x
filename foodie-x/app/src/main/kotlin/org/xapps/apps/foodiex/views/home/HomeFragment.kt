@@ -32,11 +32,12 @@ import org.xapps.apps.foodiex.views.extensions.navigationBarColor
 import org.xapps.apps.foodiex.views.extensions.setFadeInText
 import org.xapps.apps.foodiex.views.extensions.setStatusBarForegoundColor
 import org.xapps.apps.foodiex.views.extensions.uncheckAllItems
+import org.xapps.apps.foodiex.views.navigation.MainNavigator
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class HomeFragment @Inject constructor(): Fragment() {
+class HomeFragment @Inject constructor(): Fragment(), MainNavigator {
 
     private lateinit var bindings: FragmentHomeBinding
 
@@ -162,8 +163,12 @@ class HomeFragment @Inject constructor(): Fragment() {
         findNavController().navigate(HomeFragmentDirections.actionFragmentHomeToFragmentSearch())
     }
 
-    private fun openServiceKey() {
+    override fun openServiceKey() {
         innerNavController.navigate(R.id.fragment_service_key)
+    }
+
+    override fun openRecipeDetails(id: Long) {
+        TODO("Not yet implemented")
     }
 
     private fun openAbout() {
