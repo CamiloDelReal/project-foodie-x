@@ -13,7 +13,7 @@ android {
     ext {
         appName = "OroSwiss"
         majorVersion = 0
-        minorVersion = 1
+        minorVersion = 6
         patchVersion = 0
         statusVersion = ""
     }
