@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         applicationId "org.xapps.apps.foodiex"
-        minSdk 24
+        minSdk 26
         targetSdk 30
 
         versionCode majorVersion * 10000 + minorVersion * 100 + patchVersion

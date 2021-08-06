@@ -6,7 +6,7 @@
     <data>
         <variable
             name="recipe"
-            type="org.xapps.apps.foodiex.core.models.PopularMeal" />
+            type="org.xapps.apps.foodiex.core.models.Recipe" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

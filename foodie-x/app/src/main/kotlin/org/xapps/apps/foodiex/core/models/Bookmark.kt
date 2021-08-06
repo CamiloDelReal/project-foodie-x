@@ -3,6 +3,8 @@ package org.xapps.apps.foodiex.core.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import org.xapps.apps.foodiex.core.utils.parseToString
+import java.time.LocalDateTime
 
 
 @Entity(tableName = "bookmarks")
@@ -15,5 +17,8 @@ data class Bookmark(
     var recipeId: Long,
 
     @ColumnInfo(name = "bookmark")
-    var bookmark: Boolean
+    var bookmark: Boolean,
+
+    @ColumnInfo(name = "timestamp")
+    val timestamp: String = LocalDateTime.now().parseToString()
 )

@@ -47,11 +47,7 @@ class RecipePagingSource constructor(
                 )
                 if(response.results.isNotEmpty()) {
                     val ids = dao.insertAsync(response.results)
-                    if (response.results.size == ids.size) {
-                        response.results.forEachIndexed { index, recipe ->
-                            recipe.guid = ids[index]
-                        }
-                    } else {
+                    if (response.results.size != ids.size) {
                         error<RecipePagingSource>("Error saving recipes in database. Skipping updating cache")
                     }
                 }

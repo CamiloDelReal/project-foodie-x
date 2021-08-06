@@ -7,15 +7,17 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import org.xapps.apps.foodiex.core.utils.parseToString
+import java.time.LocalDateTime
 
 
 @JsonClass(generateAdapter = true)
 @Entity(tableName = "recipes")
 data class Recipe(
-    @Transient
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "guid")
-    var guid: Long = 0,
+//    @Transient
+//    @PrimaryKey(autoGenerate = true)
+//    @ColumnInfo(name = "guid")
+//    var guid: Long = 0,
 
     @Json(name = "id")
     @PrimaryKey(autoGenerate = false)
@@ -32,7 +34,11 @@ data class Recipe(
 
     @Json(name = "title")
     @ColumnInfo(name = "title")
-    val title: String
+    val title: String,
+
+    @Transient
+    @ColumnInfo(name = "timestamp")
+    val timestamp: String = LocalDateTime.now().parseToString()
 ) {
 
     @Ignore

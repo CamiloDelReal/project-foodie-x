@@ -8,32 +8,32 @@ import org.xapps.apps.foodiex.core.models.PopularDrink
 @Dao
 interface PopularDrinkDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     suspend fun insertAsync(recipe: PopularDrink): Long
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     fun insert(recipe: PopularDrink): Long
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     suspend fun insertAsync(recipes: List<PopularDrink>): List<Long>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     fun insert(recipes: List<PopularDrink>): List<Long>
 
     @Transaction
-    @Query("SELECT * FROM popular_drinks")
+    @Query("SELECT * FROM popular_drinks ORDER BY timestamp ASC")
     fun recipesAsync(): Flow<List<PopularDrink>>
 
     @Transaction
-    @Query("SELECT * FROM popular_drinks")
+    @Query("SELECT * FROM popular_drinks ORDER BY timestamp ASC")
     fun recipes(): List<PopularDrink>
 
     @Transaction
-    @Query("SELECT * FROM popular_drinks WHERE id = :id")
+    @Query("SELECT * FROM popular_drinks WHERE guid = :id")
     fun recipeAsync(id: Long): Flow<PopularDrink>
 
     @Transaction
-    @Query("SELECT * FROM popular_drinks WHERE id = :id")
+    @Query("SELECT * FROM popular_drinks WHERE guid = :id")
     fun recipe(id: Long): PopularDrink
 
     @Update

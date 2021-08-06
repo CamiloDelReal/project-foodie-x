@@ -19,6 +19,7 @@ import org.xapps.apps.foodiex.R
 import org.xapps.apps.foodiex.core.exceptions.QuotaHasBeenReachException
 import org.xapps.apps.foodiex.core.models.PopularDrink
 import org.xapps.apps.foodiex.core.models.PopularMeal
+import org.xapps.apps.foodiex.core.models.Recipe
 import org.xapps.apps.foodiex.core.utils.debug
 import org.xapps.apps.foodiex.databinding.FragmentBoardBinding
 import org.xapps.apps.foodiex.views.adapters.PopularDrinkAdapter
@@ -41,14 +42,14 @@ class BoardFragment @Inject constructor(): Fragment() {
     private lateinit var popularDrinksAdapter: PopularDrinkAdapter
 
     private val popularDrinksAdapterListener = object: PopularDrinkAdapter.Listener {
-        override fun clicked(recipe: PopularDrink) {
+        override fun clicked(recipe: Recipe) {
         }
 
-        override fun requestBookmark(recipe: PopularDrink) {
+        override fun requestBookmark(recipe: Recipe) {
             viewModel.requestBookmark(recipe)
         }
 
-        override fun requestRemoveBookmark(recipe: PopularDrink) {
+        override fun requestRemoveBookmark(recipe: Recipe) {
             viewModel.requestRemoveBookmark(recipe)
         }
     }
@@ -56,14 +57,14 @@ class BoardFragment @Inject constructor(): Fragment() {
     private lateinit var popularMealsAdapter: PopularMealAdapter
 
     private val popularMealsAdapterListener = object: PopularMealAdapter.Listener {
-        override fun clicked(recipe: PopularMeal) {
+        override fun clicked(recipe: Recipe) {
         }
 
-        override fun requestBookmark(recipe: PopularMeal) {
+        override fun requestBookmark(recipe: Recipe) {
             viewModel.requestBookmark(recipe)
         }
 
-        override fun requestRemoveBookmark(recipe: PopularMeal) {
+        override fun requestRemoveBookmark(recipe: Recipe) {
             viewModel.requestRemoveBookmark(recipe)
         }
     }

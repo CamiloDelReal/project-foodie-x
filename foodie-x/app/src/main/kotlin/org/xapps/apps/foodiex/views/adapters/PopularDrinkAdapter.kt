@@ -3,21 +3,20 @@ package org.xapps.apps.foodiex.views.adapters
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ViewDataBinding
 import org.xapps.apps.foodiex.R
-import org.xapps.apps.foodiex.core.models.PopularDrink
 import org.xapps.apps.foodiex.core.models.Recipe
 import org.xapps.apps.foodiex.core.utils.debug
 import org.xapps.apps.foodiex.databinding.ItemPopularDrinkBinding
 
 
 class PopularDrinkAdapter(
-    private val data: ObservableArrayList<PopularDrink>,
+    private val data: ObservableArrayList<Recipe>,
     private val listener: Listener
-) : ListBindingAdapter<PopularDrink>(data) {
+) : ListBindingAdapter<Recipe>(data) {
 
     override val itemLayout: Int
         get() =  R.layout.item_popular_drink
 
-    override fun bind(bindings: ViewDataBinding, item: PopularDrink) {
+    override fun bind(bindings: ViewDataBinding, item: Recipe) {
         debug<PopularDrinkAdapter>("Item binded $item")
         bindings as ItemPopularDrinkBinding
         bindings.recipe = item
@@ -38,10 +37,10 @@ class PopularDrinkAdapter(
 
     interface Listener {
 
-        fun clicked(recipe: PopularDrink)
+        fun clicked(recipe: Recipe)
 
-        fun requestBookmark(recipe: PopularDrink)
-        fun requestRemoveBookmark(recipe: PopularDrink)
+        fun requestBookmark(recipe: Recipe)
+        fun requestRemoveBookmark(recipe: Recipe)
 
     }
 }

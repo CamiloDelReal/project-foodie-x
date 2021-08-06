@@ -20,7 +20,7 @@ interface BookmarkDao {
     fun insert(bookmarks: List<Bookmark>): List<Long>
 
     @Transaction
-    @Query("SELECT * FROM bookmarks")
+    @Query("SELECT * FROM bookmarks ORDER BY timestamp ASC")
     fun bookmarks(): List<Bookmark>
 
     @Transaction

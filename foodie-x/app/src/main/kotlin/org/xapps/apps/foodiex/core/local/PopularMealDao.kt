@@ -22,19 +22,19 @@ interface PopularMealDao {
     fun insert(recipes: List<PopularMeal>): List<Long>
 
     @Transaction
-    @Query("SELECT * FROM popular_meals")
+    @Query("SELECT * FROM popular_meals ORDER BY timestamp ASC")
     fun recipesAsync(): Flow<List<PopularMeal>>
 
     @Transaction
-    @Query("SELECT * FROM popular_meals")
+    @Query("SELECT * FROM popular_meals ORDER BY timestamp ASC")
     fun recipes(): List<PopularMeal>
 
     @Transaction
-    @Query("SELECT * FROM popular_meals WHERE id = :id")
+    @Query("SELECT * FROM popular_meals WHERE guid = :id")
     fun recipeAsync(id: Long): Flow<PopularMeal>
 
     @Transaction
-    @Query("SELECT * FROM popular_meals WHERE id = :id")
+    @Query("SELECT * FROM popular_meals WHERE guid = :id")
     fun recipe(id: Long): PopularMeal
 
     @Update

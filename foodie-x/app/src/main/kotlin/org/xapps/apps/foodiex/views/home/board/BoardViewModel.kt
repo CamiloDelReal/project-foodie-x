@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.skydoves.whatif.addAllWhatIfNotNull
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Job
@@ -14,8 +13,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.xapps.apps.foodiex.R
 import org.xapps.apps.foodiex.core.exceptions.QuotaHasBeenReachException
-import org.xapps.apps.foodiex.core.models.PopularDrink
-import org.xapps.apps.foodiex.core.models.PopularMeal
 import org.xapps.apps.foodiex.core.models.Recipe
 import org.xapps.apps.foodiex.core.repositories.RecipesRepository
 import org.xapps.apps.foodiex.core.utils.ConnectivityTracker
@@ -41,8 +38,8 @@ class BoardViewModel @Inject constructor(
     val message: SharedFlow<Message> = messageFlow
 
     val history = ObservableArrayList<Recipe>()
-    val popularDrinks = ObservableArrayList<PopularDrink>()
-    val popularMeals = ObservableArrayList<PopularMeal>()
+    val popularDrinks = ObservableArrayList<Recipe>()
+    val popularMeals = ObservableArrayList<Recipe>()
 
     private var wasInternetLastTimeAvailable = true
 
@@ -132,7 +129,7 @@ class BoardViewModel @Inject constructor(
         }
     }
 
-    fun requestBookmark(recipe: PopularDrink) {
+    fun requestBookmark(recipe: Recipe) {
         debug<BoardViewModel>("Resquesting bookmark $recipe")
         viewModelScope.launch {
             val result = recipesRepository.insertBookmark(recipe)
@@ -145,33 +142,7 @@ class BoardViewModel @Inject constructor(
         }
     }
 
-    fun requestRemoveBookmark(recipe: PopularDrink) {
-        debug<BoardViewModel>("Resquesting unbookmark $recipe")
-        viewModelScope.launch {
-            val result = recipesRepository.removeBookmark(recipe)
-            result.either({ failure ->
-                error<RecipesViewModel>("Error received $failure")
-                messageFlow.tryEmit(Message.Error(Exception(context.getString(R.string.error_unbookmarking_recipe))))
-            }, { bookmark ->
-                debug<RecipesViewModel>("Bookmark removed")
-            })
-        }
-    }
-
-    fun requestBookmark(recipe: PopularMeal) {
-        debug<BoardViewModel>("Resquesting bookmark $recipe")
-        viewModelScope.launch {
-            val result = recipesRepository.insertBookmark(recipe)
-            result.either({ failure ->
-                error<RecipesViewModel>("Error received $failure")
-                messageFlow.tryEmit(Message.Error(Exception(context.getString(R.string.error_bookmarking_recipe))))
-            }, { bookmark ->
-                debug<RecipesViewModel>("Bookmark created")
-            })
-        }
-    }
-
-    fun requestRemoveBookmark(recipe: PopularMeal) {
+    fun requestRemoveBookmark(recipe: Recipe) {
         debug<BoardViewModel>("Resquesting unbookmark $recipe")
         viewModelScope.launch {
             val result = recipesRepository.removeBookmark(recipe)
