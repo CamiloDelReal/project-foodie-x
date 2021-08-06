@@ -54,7 +54,7 @@ interface RecipeDao {
     suspend fun recipesPaginatedAsync(offset: Int, limit: Int): List<Recipe>
 
     @Transaction
-    @Query("SELECT * FROM recipes,bookmarks WHERE recipes.id = bookmarks.recipe_id AND bookmarks.bookmark = 1 GROUP BY recipes.id ORDER BY bookmarks.timestamp ASC")
+    @Query("SELECT * FROM recipes,bookmarks WHERE recipes.id = bookmarks.recipe_id AND bookmarks.bookmark = 1 GROUP BY recipes.id ORDER BY recipes.timestamp ASC")
     fun recipesBookmarkedPaginatedAsync(): PagingSource<Int, Recipe>
 
     @Transaction

@@ -168,7 +168,7 @@ class HomeFragment @Inject constructor(): Fragment(), MainNavigator {
     }
 
     override fun openRecipeDetails(id: Long) {
-        TODO("Not yet implemented")
+        findNavController().navigate(HomeFragmentDirections.actionFragmentHomeToDetailsFragment())
     }
 
     private fun openAbout() {

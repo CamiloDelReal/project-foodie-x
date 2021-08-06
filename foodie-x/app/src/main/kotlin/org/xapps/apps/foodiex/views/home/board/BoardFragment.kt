@@ -27,6 +27,7 @@ import org.xapps.apps.foodiex.views.adapters.PopularMealAdapter
 import org.xapps.apps.foodiex.views.extensions.showSuccess
 import org.xapps.apps.foodiex.views.extensions.showWarning
 import org.xapps.apps.foodiex.views.home.recipes.RecipesFragment
+import org.xapps.apps.foodiex.views.navigation.MainNavigator
 import org.xapps.apps.foodiex.views.utils.Message
 import javax.inject.Inject
 
@@ -36,6 +37,7 @@ class BoardFragment @Inject constructor(): Fragment() {
 
     private lateinit var bindings: FragmentBoardBinding
     private val viewModel: BoardViewModel by viewModels()
+    private lateinit var mainNavigator: MainNavigator
 
     private var messageJob: Job? = null
 
@@ -43,6 +45,7 @@ class BoardFragment @Inject constructor(): Fragment() {
 
     private val popularDrinksAdapterListener = object: PopularDrinkAdapter.Listener {
         override fun clicked(recipe: Recipe) {
+            mainNavigator.openRecipeDetails(recipe.id)
         }
 
         override fun requestBookmark(recipe: Recipe) {
@@ -58,6 +61,7 @@ class BoardFragment @Inject constructor(): Fragment() {
 
     private val popularMealsAdapterListener = object: PopularMealAdapter.Listener {
         override fun clicked(recipe: Recipe) {
+            mainNavigator.openRecipeDetails(recipe.id)
         }
 
         override fun requestBookmark(recipe: Recipe) {
@@ -81,6 +85,8 @@ class BoardFragment @Inject constructor(): Fragment() {
         exitTransition = MaterialFadeThrough().apply {
             duration = 200
         }
+
+        mainNavigator = requireParentFragment().requireParentFragment() as MainNavigator
     }
 
     override fun onCreateView(

@@ -6,9 +6,9 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 
-const val DATE_TIME_PATTERN_DB = "yyyyMMddhhmmss"
+const val DATE_TIME_PATTERN_DB = "yyyyMMddhhmmssSSSSSS"
 const val DATE_PATTERN_DB = "yyyyMMdd"
-const val TIME_PATTERN_DB = "hhmmss"
+const val TIME_PATTERN_DB = "hhmmssSSSSSS"
 
 
 fun LocalDateTime.parseToString(format: String? = null): String {

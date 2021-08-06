@@ -14,11 +14,6 @@ import java.time.LocalDateTime
 @JsonClass(generateAdapter = true)
 @Entity(tableName = "recipes")
 data class Recipe(
-//    @Transient
-//    @PrimaryKey(autoGenerate = true)
-//    @ColumnInfo(name = "guid")
-//    var guid: Long = 0,
-
     @Json(name = "id")
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")

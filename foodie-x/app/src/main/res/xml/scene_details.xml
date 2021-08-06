@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetStart="@id/constraint_expanded"
+        app:constraintSetEnd="@id/constraint_collapsed">
+
+    </Transition>
+
+
+    <ConstraintSet android:id="@+id/constraint_expanded">
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/constraint_collapsed">
+
+
+    </ConstraintSet>
+
+</MotionScene>

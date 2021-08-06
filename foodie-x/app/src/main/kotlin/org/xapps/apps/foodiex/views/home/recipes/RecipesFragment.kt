@@ -1,6 +1,5 @@
 package org.xapps.apps.foodiex.views.home.recipes
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,14 +11,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.xapps.apps.foodiex.R
 import org.xapps.apps.foodiex.core.exceptions.QuotaHasBeenReachException
 import org.xapps.apps.foodiex.core.models.Recipe
@@ -44,6 +40,7 @@ class RecipesFragment @Inject constructor() : Fragment() {
 
     private val recipesAdapterListener = object: RecipeAdapter.Listener {
         override fun clicked(recipe: Recipe) {
+            mainNavigator.openRecipeDetails(recipe.id)
         }
 
         override fun requestBookmark(recipe: Recipe) {

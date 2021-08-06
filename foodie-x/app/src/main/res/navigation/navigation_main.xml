@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_fragment_home_to_fragment_search"
             app:destination="@id/fragment_search" />
+        <action
+            android:id="@+id/action_fragment_home_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
 
     <fragment
@@ -41,5 +44,10 @@
         android:name="org.xapps.apps.foodiex.views.home.search.SearchBottomSheetFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="org.xapps.apps.foodiex.views.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 
 </navigation>
